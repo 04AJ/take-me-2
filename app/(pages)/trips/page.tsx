@@ -2,6 +2,7 @@
 
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/Button";
 
 export default function Trips() {
   const [notes, setNotes] = useState<any[] | null>(null);
@@ -17,7 +18,9 @@ export default function Trips() {
 
   return (
     <div>
-      <h1>Test</h1>
+      <h1>Connect with Supa Base and Ammadeus</h1>
+      <div>This is my first page!</div>
+      <Button />
       <pre>{JSON.stringify(notes, null, 2)}</pre>
     </div>
   );
