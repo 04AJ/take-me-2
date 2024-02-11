@@ -1,31 +1,36 @@
-// pages/index.tsx
 "use client";
 import { useEffect, useState } from "react";
-import amadeus from "../../../utils/getAmadeusInstance";
+import axios from "axios";
 
 export default function Flights() {
   const [flights, setFlights] = useState<any[] | null>(null);
 
-  var Amadeus = require("amadeus");
-
-  amadeus.shopping.flightOffersSearch
-    .get({
-      originLocationCode: "SYD",
-      destinationLocationCode: "BKK",
-      departureDate: "2024-06-01",
-      adults: "2",
-    })
-    .then(function (response: any) {
-      console.log(response.result);
-    })
-    .catch(function (responseError: any) {
-      console.log(responseError.code);
-    });
+  useEffect(() => {
+    axios
+      .get<any[] | null>(`/api/flight`)
+      .then((response) => {
+        if (response.data) {
+          setFlights(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log("error fetching data");
+      });
+  }, []);
 
   return (
     <div>
-      <h1>Flights from SYD to BKK</h1>
-      <p>Result is in terminal - console.log</p>
+      <h1 className="text-5xl">Flights from SYD to BKK</h1>
+      {flights ? (
+        // <ul>
+        //   {flights.map((flight, index) => (
+        //     <li key={index}>{flights.source}</li>
+        //   ))}
+        // </ul>
+        <pre className="text-xs">{JSON.stringify(flights, null, 2)}</pre>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
