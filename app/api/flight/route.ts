@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
       children: "0",
       infants: "0",
       travelClass: "ECONOMY",
-      max: "7",
+      max: "40",
       nonStop: "true",
     });
     return new Response(JSON.stringify(response.data));

@@ -93,7 +93,7 @@ export default function Flights() {
                         ? airlines[flight.id].logo_url
                         : ""
                     }
-                    alt="airline logo"
+                    alt={flight.itineraries[0].segments[0].carrierCode}
                     width={100}
                   />
                 </div>
