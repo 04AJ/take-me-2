@@ -13,18 +13,32 @@ export async function GET(req: NextRequest) {
   //   const travelClass = searchParams.get("travelClass");
   //   const max = searchParams.get("max");
 
-  const response = await amadeus.shopping.flightOffersSearch.get({
-    originLocationCode: "JFK",
-    destinationLocationCode: "LHR",
-    departureDate: "2024-06-01",
-    returnDate: "2024-07-01",
-    adults: "2",
-    children: "1",
-    infants: "1",
-    travelClass: "ECONOMY",
-    max: "5",
-    nonStop: "true",
-  });
-
-  return new Response(JSON.stringify(response.data));
+  if (returnDate) {
+    const response = await amadeus.shopping.flightOffersSearch.get({
+      originLocationCode: `${originLocationCode}`,
+      destinationLocationCode: `${destinationLocationCode}`,
+      departureDate: `${departureDate}`,
+      returnDate: `${returnDate}`,
+      adults: "1",
+      children: "0",
+      infants: "0",
+      travelClass: "ECONOMY",
+      max: "7",
+      nonStop: "true",
+    });
+    return new Response(JSON.stringify(response.data));
+  } else {
+    const response = await amadeus.shopping.flightOffersSearch.get({
+      originLocationCode: `${originLocationCode}`,
+      destinationLocationCode: `${destinationLocationCode}`,
+      departureDate: `${departureDate}`,
+      adults: "1",
+      children: "0",
+      infants: "0",
+      travelClass: "ECONOMY",
+      max: "7",
+      nonStop: "true",
+    });
+    return new Response(JSON.stringify(response.data));
+  }
 }
