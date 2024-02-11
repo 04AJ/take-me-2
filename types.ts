@@ -98,3 +98,27 @@ export interface Airlines {
   name: string;
   logo_url: string;
 }
+
+// Dictionary of international airports with name as key and code as value
+export const internationalAirports: { [key: string]: string } = {
+  "Hartsfield-Jackson Atlanta International Airport": "ATL",
+  "Beijing Capital International Airport": "PEK",
+  "Los Angeles International Airport": "LAX",
+  "Dubai International Airport": "DXB",
+  "Tokyo Haneda Airport": "HND",
+  "O'Hare International Airport (Chicago)": "ORD",
+  "London Heathrow Airport": "LHR",
+  "Hong Kong International Airport": "HKG",
+  "Shanghai Pudong International Airport": "PVG",
+  "Paris Charles de Gaulle Airport": "CDG",
+  "Dallas/Fort Worth International Airport": "DFW",
+  "Istanbul Airport": "IST",
+  "Guangzhou Baiyun International Airport": "CAN",
+  "Frankfurt Airport": "FRA",
+  "Denver International Airport": "DEN",
+  "Singapore Changi Airport": "SIN",
+  "Amsterdam Schiphol Airport": "AMS",
+  "Indira Gandhi International Airport (Delhi)": "DEL",
+  "Incheon International Airport (Seoul)": "ICN",
+  "Suvarnabhumi Airport (Bangkok)": "BKK",
+};

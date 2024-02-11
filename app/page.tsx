@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import Header from "@/components/Header";
 import SearchForm from "@/components/SearchForm";
+import { GiAirplaneArrival } from "react-icons/gi";
 
 export default async function Index() {
   const canInitSupabaseClient = () => {
@@ -17,9 +18,13 @@ export default async function Index() {
   const isSupabaseConnected = canInitSupabaseClient();
 
   return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center text-9xl">
+    <div className="flex-1 w-full flex flex-col gap-20 items-center text-9xl bg-gradient-to-b from-black to-blue-800 h-32">
       <Header />
-      TAKE ME 2
+      <div className="flex flex-row gap-5">
+        TAKE ME 2
+        <GiAirplaneArrival />
+      </div>
+
       <SearchForm />
     </div>
   );
