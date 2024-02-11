@@ -4,10 +4,15 @@ import axios from "axios";
 
 export default function Flights() {
   const [flights, setFlights] = useState<any[] | null>(null);
-
+  const originLocationCode = "JFK";
+  const destinationLocationCode = "LHR";
+  const departureDate = "2024-06-01";
+  const returnDate = "2024-07-01";
   useEffect(() => {
     axios
-      .get<any[] | null>(`/api/flight`)
+      .get<any[] | null>(
+        `/api/flight?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}`
+      )
       .then((response) => {
         if (response.data) {
           setFlights(response.data);
