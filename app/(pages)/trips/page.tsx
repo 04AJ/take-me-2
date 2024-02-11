@@ -9,7 +9,7 @@ export default function Trips() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await supabase.from("USER").select();
+      const { data } = await supabase.from("USER").select('*');
       setNotes(data);
     };
     getData();
