@@ -1,9 +1,6 @@
-import DeployButton from "../components/DeployButton";
-import AuthButton from "../components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
-import ConnectSupabaseSteps from "@/components/ConnectSupabaseSteps";
-import SignUpUserSteps from "@/components/SignUpUserSteps";
 import Header from "@/components/Header";
+import SearchForm from "@/components/SearchForm";
 
 export default async function Index() {
   const canInitSupabaseClient = () => {
@@ -23,6 +20,7 @@ export default async function Index() {
     <div className="flex-1 w-full flex flex-col gap-20 items-center text-9xl">
       <Header />
       TAKE ME 2
+      <SearchForm />
     </div>
   );
 }

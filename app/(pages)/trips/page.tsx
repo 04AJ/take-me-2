@@ -19,8 +19,6 @@ export default function Trips() {
   return (
     <div>
       <h1>Connect with Supa Base and Ammadeus</h1>
-      <div>This is my first page!</div>
-      <Button />
       <pre>{JSON.stringify(notes, null, 2)}</pre>
     </div>
   );
