@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { TbMailFilled } from "react-icons/tb";
-import { FaLocationPin } from "react-icons/fa6";
+import { useFlightQuery } from "@/hooks/useFlightQuery";
 import { ZodType, z } from "zod";
+import { useRouter } from "next/navigation";
 
 type Input = {
   originLocationCode: string;
@@ -14,6 +14,9 @@ type Input = {
 };
 
 const SearchForm = () => {
+  const query = useFlightQuery();
+  const router = useRouter();
+
   const schema = z.object({
     originLocationCode: z.string().min(1),
     destinationLocationCode: z.string().min(1),
@@ -29,7 +32,11 @@ const SearchForm = () => {
     formState: { errors },
   } = useForm<Input>({ resolver: zodResolver(schema) });
   const onSubmit: SubmitHandler<Input> = (data) => {
-    setOpenModal(true);
+    query.setOriginLocationCode(data.originLocationCode);
+    query.setDestinationLocationCode(data.destinationLocationCode);
+    query.setDepartureDate(data.departureDate);
+    query.setReturnDate(data.returnDate);
+    router.push("/flights");
   };
   const [openModal, setOpenModal] = useState(false);
 
@@ -50,10 +57,10 @@ const SearchForm = () => {
               {/* register your input into the hook by invoking the "register" function */}
 
               <div className="flex flex-col">
-                <label className="text-primary-red">originLocationCode*</label>
+                <label className="text-primary-red">Origin Airport Code*</label>
                 <input
                   {...register("originLocationCode", { required: true })}
-                  placeholder="originLocationCode"
+                  placeholder="Origin Airport Code"
                   className="p-2 rounded text-black"
                 />
                 {errors.originLocationCode && (
@@ -65,11 +72,11 @@ const SearchForm = () => {
 
               <div className="flex flex-col">
                 <label className="text-primary-red">
-                  destinationLocationCode*
+                  Destination Airport Code*
                 </label>
                 <input
                   {...register("destinationLocationCode", { required: true })}
-                  placeholder="destinationLocationCode"
+                  placeholder=" Destination Airport Code"
                   className="p-2 rounded text-black"
                 />
                 {errors.destinationLocationCode && (
@@ -80,7 +87,7 @@ const SearchForm = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="text-primary-red">departureDate*</label>
+                <label className="text-primary-red">Departure Date*</label>
                 <input
                   {...register("departureDate", { required: true })}
                   placeholder="departureDate"
@@ -94,7 +101,7 @@ const SearchForm = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="text-primary-red">returnDate</label>
+                <label className="text-primary-red">Return Date*</label>
                 <input
                   {...register("returnDate", { required: true })}
                   placeholder="returnDate"
