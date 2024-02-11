@@ -59,7 +59,7 @@ export default function Flights() {
   }, []);
 
   return (
-    <div className="text-white">
+    <div className="bg-gradient-to-b from-blue-950 to-black text-white w-full h-full">
       <div className="absolute top-5 left-5 text-white font-bold py-2 px-4 transition-transform transform hover:scale-110">
         <IoArrowBackCircleOutline
           style={{ fontSize: "3em" }}
@@ -76,64 +76,65 @@ export default function Flights() {
         Departure: {new Date(query.departureDate).toDateString()} / Return:{" "}
         {new Date(query.returnDate).toDateString()}
       </h2>
-
-      {flights ? (
-        <ol>
-          {flights.map((flight) => (
-            <div className="border-b mb-3">
-              <div className="flex flex-row gap-5">
-                <div>
-                  {airlines && airlines[flight.id]
-                    ? airlines[flight.id].name
-                    : ""}
+      <div className="border-b border-white ml-20 mr-20 mt-10">
+        {flights ? (
+          <ol>
+            {flights.map((flight) => (
+              <div className="border-b border-white mb-3">
+                <div className="flex flex-row gap-5">
+                  <div>
+                    {airlines && airlines[flight.id]
+                      ? airlines[flight.id].name
+                      : ""}
+                  </div>
+                  <img
+                    src={
+                      airlines && airlines[flight.id]
+                        ? airlines[flight.id].logo_url
+                        : ""
+                    }
+                    alt="airline logo"
+                    width={100}
+                  />
                 </div>
-                <img
-                  src={
-                    airlines && airlines[flight.id]
-                      ? airlines[flight.id].logo_url
-                      : ""
-                  }
-                  alt="airline logo"
-                  width={100}
-                />
+                <li key={flight.id} className="flex flex-row gap-5">
+                  <div>Depart:</div>
+                  <div>
+                    {new Date(
+                      flight.itineraries[0].segments[0].departure.at
+                    ).toLocaleTimeString()}
+                    -
+                    {new Date(
+                      flight.itineraries[0].segments[0].arrival.at
+                    ).toLocaleTimeString()}{" "}
+                  </div>
+                  <div>
+                    {flight.itineraries[1].segments[0].duration.substring(2)}{" "}
+                  </div>
+                </li>
+                <li key={flight.id} className="flex flex-row gap-5">
+                  <div>Return: </div>
+                  <div>
+                    {new Date(
+                      flight.itineraries[1].segments[0].departure.at
+                    ).toLocaleTimeString()}
+                    -
+                    {new Date(
+                      flight.itineraries[1].segments[0].arrival.at
+                    ).toLocaleTimeString()}{" "}
+                  </div>
+                  <div>
+                    {flight.itineraries[0].segments[0].duration.substring(2)}{" "}
+                  </div>
+                  <div>Total Price: ${flight.price.grandTotal} </div>
+                </li>
               </div>
-              <li key={flight.id} className="flex flex-row gap-5">
-                <div>Depart:</div>
-                <div>
-                  {new Date(
-                    flight.itineraries[0].segments[0].departure.at
-                  ).toLocaleTimeString()}
-                  -
-                  {new Date(
-                    flight.itineraries[0].segments[0].arrival.at
-                  ).toLocaleTimeString()}{" "}
-                </div>
-                <div>
-                  {flight.itineraries[1].segments[0].duration.substring(2)}{" "}
-                </div>
-              </li>
-              <li key={flight.id} className="flex flex-row gap-5">
-                <div>Return: </div>
-                <div>
-                  {new Date(
-                    flight.itineraries[1].segments[0].departure.at
-                  ).toLocaleTimeString()}
-                  -
-                  {new Date(
-                    flight.itineraries[1].segments[0].arrival.at
-                  ).toLocaleTimeString()}{" "}
-                </div>
-                <div>
-                  {flight.itineraries[0].segments[0].duration.substring(2)}{" "}
-                </div>
-                <div>Total Price: ${flight.price.grandTotal} </div>
-              </li>
-            </div>
-          ))}
-        </ol>
-      ) : (
-        <p>Loading...</p>
-      )}
+            ))}
+          </ol>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
 }
