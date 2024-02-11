@@ -20,7 +20,7 @@ export default function Flights() {
 
   return (
     <div>
-      <h1 className="text-5xl">Flights from SYD to BKK</h1>
+      <h1 className="text-5xl">Flights from JKF to LHR</h1>
       {flights ? (
         // <ul>
         //   {flights.map((flight, index) => (
