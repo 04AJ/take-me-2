@@ -10,7 +10,7 @@ export default function Trips() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await supabase.from("USER").select();
+      const { data, error } = await supabase.from("AIRLINE").select();
       setNotes(data);
     };
     getData();

@@ -12,6 +12,7 @@
     "amadeus": "^9.1.0",
     "autoprefixer": "10.4.17",
     "axios": "^1.6.7",
+    "dayjs": "^1.11.10",
     "geist": "^1.2.1",
     "next": "latest",
     "nextjs-cors": "^2.2.0",

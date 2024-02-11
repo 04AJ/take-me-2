@@ -57,10 +57,10 @@ const SearchForm = () => {
               {/* register your input into the hook by invoking the "register" function */}
 
               <div className="flex flex-col">
-                <label className="text-primary-red">originLocationCode*</label>
+                <label className="text-primary-red">Origin Airport Code*</label>
                 <input
                   {...register("originLocationCode", { required: true })}
-                  placeholder="originLocationCode"
+                  placeholder="Origin Airport Code"
                   className="p-2 rounded text-black"
                 />
                 {errors.originLocationCode && (
@@ -72,11 +72,11 @@ const SearchForm = () => {
 
               <div className="flex flex-col">
                 <label className="text-primary-red">
-                  destinationLocationCode*
+                  Destination Airport Code*
                 </label>
                 <input
                   {...register("destinationLocationCode", { required: true })}
-                  placeholder="destinationLocationCode"
+                  placeholder=" Destination Airport Code"
                   className="p-2 rounded text-black"
                 />
                 {errors.destinationLocationCode && (
@@ -87,7 +87,7 @@ const SearchForm = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="text-primary-red">departureDate*</label>
+                <label className="text-primary-red">Departure Date*</label>
                 <input
                   {...register("departureDate", { required: true })}
                   placeholder="departureDate"
@@ -101,7 +101,7 @@ const SearchForm = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="text-primary-red">returnDate</label>
+                <label className="text-primary-red">Return Date*</label>
                 <input
                   {...register("returnDate", { required: true })}
                   placeholder="returnDate"
