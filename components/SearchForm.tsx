@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useFlightQuery } from "@/hooks/useFlightQuery";
 import { ZodType, z } from "zod";
 import { useRouter } from "next/navigation";
+import { internationalAirports } from "@/types";
 
 type Input = {
   originLocationCode: string;
@@ -90,8 +91,8 @@ const SearchForm = () => {
                 <label className="text-primary-red">Departure Date*</label>
                 <input
                   {...register("departureDate", { required: true })}
-                  placeholder="departureDate"
                   className="p-2 rounded text-black"
+                  type="date"
                 />
                 {errors.departureDate && (
                   <span className="text-sm text-red-700">
@@ -104,8 +105,8 @@ const SearchForm = () => {
                 <label className="text-primary-red">Return Date*</label>
                 <input
                   {...register("returnDate", { required: true })}
-                  placeholder="returnDate"
                   className="p-2 rounded text-black"
+                  type="date"
                 />
                 {errors.returnDate && (
                   <span className="text-sm text-red-700">
