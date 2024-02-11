@@ -8,7 +8,9 @@
   "dependencies": {
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
+    "amadeus": "^9.1.0",
     "autoprefixer": "10.4.17",
+    "axios": "^1.6.7",
     "geist": "^1.2.1",
     "next": "latest",
     "postcss": "8.4.33",
